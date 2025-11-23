@@ -7,6 +7,7 @@ function Navigation() {
       <NavLink to="/" end>Home</NavLink>
       <NavLink to="/mustache">Mustache</NavLink>
       <NavLink to="/unlayer">Unlayer</NavLink>
+      <NavLink to="/grapesjs">GrapesJS</NavLink>
     </nav>
   )
 }
