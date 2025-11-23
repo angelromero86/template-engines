@@ -28,6 +28,21 @@ Bienvenido a nuestro sistema. Tu email registrado es: **{{email}}**
     return mascotas.split(',').map(pet => pet.trim()).filter(pet => pet)
   }
 
+  const addStylesToHtml = (html) => {
+    // Add inline styles to ensure text is visible
+    return html
+      .replace(/<h1>/g, '<h1 style="color: #1a1a1a; margin-top: 0;">')
+      .replace(/<h2>/g, '<h2 style="color: #2a2a2a;">')
+      .replace(/<h3>/g, '<h3 style="color: #3a3a3a;">')
+      .replace(/<p>/g, '<p style="color: #1a1a1a; line-height: 1.6;">')
+      .replace(/<li>/g, '<li style="color: #1a1a1a; margin: 0.3rem 0;">')
+      .replace(/<ul>/g, '<ul style="color: #1a1a1a;">')
+      .replace(/<ol>/g, '<ol style="color: #1a1a1a;">')
+      .replace(/<strong>/g, '<strong style="color: #000000; font-weight: 600;">')
+      .replace(/<em>/g, '<em style="color: #2a2a2a;">')
+      .replace(/<a /g, '<a style="color: #3b82f6; text-decoration: underline;" ')
+  }
+
   const renderPreview = () => {
     try {
       const data = {
@@ -37,7 +52,8 @@ Bienvenido a nuestro sistema. Tu email registrado es: **{{email}}**
       }
 
       const rendered = MustacheLib.render(template, data)
-      const html = marked(rendered)
+      let html = marked(rendered)
+      html = addStylesToHtml(html)
 
       const frame = frames[selectedFrame]
       const framedHtml = frame.wrapper(html, agentName)
