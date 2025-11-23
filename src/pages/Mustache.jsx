@@ -7,7 +7,11 @@ import './Mustache.css'
 function Mustache() {
   const [name, setName] = useState('Juan Pérez')
   const [email, setEmail] = useState('juan@example.com')
-  const [mascotas, setMascotas] = useState('Firulais, Michi, Rex')
+  const [pets, setPets] = useState([
+    { name: 'Firulais', type: 'perro' },
+    { name: 'Michi', type: 'gato' },
+    { name: 'Rex', type: 'perro' }
+  ])
   const [agentName, setAgentName] = useState('María García')
   const [selectedFrame, setSelectedFrame] = useState('corporate')
   const [template, setTemplate] = useState(`# Hola {{name}}!
@@ -17,15 +21,25 @@ Bienvenido a nuestro sistema. Tu email registrado es: **{{email}}**
 ## Tus mascotas
 
 {{#pets}}
-- {{.}}
+- **{{name}}** ({{type}})
 {{/pets}}
 
 ---
 
 *Gracias por usar nuestro servicio.*`)
 
-  const getPetsArray = () => {
-    return mascotas.split(',').map(pet => pet.trim()).filter(pet => pet)
+  const handlePetChange = (index, field, value) => {
+    const newPets = [...pets]
+    newPets[index][field] = value
+    setPets(newPets)
+  }
+
+  const addPet = () => {
+    setPets([...pets, { name: '', type: 'perro' }])
+  }
+
+  const removePet = (index) => {
+    setPets(pets.filter((_, i) => i !== index))
   }
 
   const addStylesToHtml = (html) => {
@@ -48,7 +62,7 @@ Bienvenido a nuestro sistema. Tu email registrado es: **{{email}}**
       const data = {
         name,
         email,
-        pets: getPetsArray()
+        pets
       }
 
       const rendered = MustacheLib.render(template, data)
@@ -91,12 +105,28 @@ Bienvenido a nuestro sistema. Tu email registrado es: **{{email}}**
           </div>
 
           <div className="input-group">
-            <label>Mascotas (separadas por coma):</label>
-            <input
-              type="text"
-              value={mascotas}
-              onChange={(e) => setMascotas(e.target.value)}
-            />
+            <label>Mascotas:</label>
+            {pets.map((pet, index) => (
+              <div key={index} className="pet-row">
+                <input
+                  type="text"
+                  value={pet.name}
+                  onChange={(e) => handlePetChange(index, 'name', e.target.value)}
+                  placeholder="Nombre"
+                  className="pet-name"
+                />
+                <select
+                  value={pet.type}
+                  onChange={(e) => handlePetChange(index, 'type', e.target.value)}
+                  className="pet-type"
+                >
+                  <option value="perro">Perro</option>
+                  <option value="gato">Gato</option>
+                </select>
+                <button onClick={() => removePet(index)} className="remove-btn">×</button>
+              </div>
+            ))}
+            <button onClick={addPet} className="add-btn">+ Añadir mascota</button>
           </div>
 
           {frames[selectedFrame]?.requiresAgent && (

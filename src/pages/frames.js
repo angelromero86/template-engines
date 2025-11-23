@@ -12,15 +12,15 @@ export const frames = {
                 <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
               </svg>
             </div>
-            <h1 style="margin: 0; color: white; font-size: 26px; font-weight: 600;">Comunidad de Propietarios</h1>
-            <p style="margin: 8px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px;">Comunicación oficial</p>
+            <h1 style="margin: 0; color: white; font-size: 26px; font-weight: 600;">Acme Inc</h1>
+            <p style="margin: 8px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px;">Gestión de Comunidades de Propietarios</p>
           </div>
           <div style="padding: 35px 30px;">
             ${content}
           </div>
           <div style="background-color: #f8f9fa; padding: 25px 30px; border-top: 1px solid #e5e7eb; text-align: center;">
-            <p style="margin: 0 0 5px 0; color: #6b7280; font-size: 12px;">Este es un mensaje oficial de su comunidad de propietarios</p>
-            <p style="margin: 0; color: #9ca3af; font-size: 11px;">© 2024 Gestión de Comunidades</p>
+            <p style="margin: 0 0 5px 0; color: #6b7280; font-size: 12px;">Este es un mensaje oficial de Acme Inc</p>
+            <p style="margin: 0; color: #9ca3af; font-size: 11px;">© 2024 Acme Inc - Gestión de Comunidades</p>
           </div>
         </div>
       </div>

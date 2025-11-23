@@ -36,6 +36,61 @@
   font-size: 1rem;
 }
 
+.pet-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.pet-name {
+  flex: 2;
+}
+
+.pet-type {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: inherit;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.remove-btn {
+  background-color: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: all 0.2s;
+}
+
+.remove-btn:hover {
+  background-color: rgba(239, 68, 68, 0.3);
+  border-color: #ef4444;
+}
+
+.add-btn {
+  background-color: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: #22c55e;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.add-btn:hover {
+  background-color: rgba(34, 197, 94, 0.3);
+  border-color: #22c55e;
+}
+
 .template-editor {
   width: 100%;
   padding: 1rem;
@@ -133,7 +188,8 @@
 
 @media (prefers-color-scheme: light) {
   .input-group input,
-  .template-editor {
+  .template-editor,
+  .pet-type {
     border: 1px solid rgba(0, 0, 0, 0.2);
     background-color: rgba(0, 0, 0, 0.05);
   }
