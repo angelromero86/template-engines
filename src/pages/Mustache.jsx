@@ -8,7 +8,8 @@ function Mustache() {
   const [name, setName] = useState('Juan Pérez')
   const [email, setEmail] = useState('juan@example.com')
   const [mascotas, setMascotas] = useState('Firulais, Michi, Rex')
-  const [selectedFrame, setSelectedFrame] = useState('simple')
+  const [agentName, setAgentName] = useState('María García')
+  const [selectedFrame, setSelectedFrame] = useState('corporate')
   const [template, setTemplate] = useState(`# Hola {{name}}!
 
 Bienvenido a nuestro sistema. Tu email registrado es: **{{email}}**
@@ -39,7 +40,7 @@ Bienvenido a nuestro sistema. Tu email registrado es: **{{email}}**
       const html = marked(rendered)
 
       const frame = frames[selectedFrame]
-      const framedHtml = frame.wrapper(html)
+      const framedHtml = frame.wrapper(html, agentName)
 
       return { __html: framedHtml }
     } catch (error) {
@@ -81,6 +82,18 @@ Bienvenido a nuestro sistema. Tu email registrado es: **{{email}}**
               onChange={(e) => setMascotas(e.target.value)}
             />
           </div>
+
+          {frames[selectedFrame]?.requiresAgent && (
+            <div className="input-group">
+              <label>Nombre del Agente:</label>
+              <input
+                type="text"
+                value={agentName}
+                onChange={(e) => setAgentName(e.target.value)}
+                placeholder="Nombre del gestor"
+              />
+            </div>
+          )}
 
           <h2>Marco</h2>
           <div className="frame-selector">
