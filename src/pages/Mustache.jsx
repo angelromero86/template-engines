@@ -13,6 +13,8 @@ function Mustache() {
     { name: 'Rex', type: 'perro' }
   ])
   const [agentName, setAgentName] = useState('María García')
+  const [corporateName, setCorporateName] = useState('Acme Inc')
+  const [communityName, setCommunityName] = useState('Comunidad Jardines del Sol')
   const [selectedFrame, setSelectedFrame] = useState('corporate')
   const [template, setTemplate] = useState(`# Hola {{name}}!
 
@@ -70,7 +72,7 @@ Bienvenido a nuestro sistema. Tu email registrado es: **{{email}}**
       html = addStylesToHtml(html)
 
       const frame = frames[selectedFrame]
-      const framedHtml = frame.wrapper(html, agentName)
+      const framedHtml = frame.wrapper(html, agentName, corporateName, communityName)
 
       return { __html: framedHtml }
     } catch (error) {
@@ -128,6 +130,30 @@ Bienvenido a nuestro sistema. Tu email registrado es: **{{email}}**
             ))}
             <button onClick={addPet} className="add-btn">+ Añadir mascota</button>
           </div>
+
+          {frames[selectedFrame]?.requiresCorporateName && (
+            <div className="input-group">
+              <label>Nombre de la Empresa:</label>
+              <input
+                type="text"
+                value={corporateName}
+                onChange={(e) => setCorporateName(e.target.value)}
+                placeholder="Nombre de la empresa"
+              />
+            </div>
+          )}
+
+          {frames[selectedFrame]?.requiresCommunityName && (
+            <div className="input-group">
+              <label>Nombre de la Comunidad:</label>
+              <input
+                type="text"
+                value={communityName}
+                onChange={(e) => setCommunityName(e.target.value)}
+                placeholder="Nombre de la comunidad"
+              />
+            </div>
+          )}
 
           {frames[selectedFrame]?.requiresAgent && (
             <div className="input-group">

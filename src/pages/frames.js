@@ -2,8 +2,8 @@ export const frames = {
   corporate: {
     name: 'Corporativo',
     description: 'Comunicación oficial de la empresa',
-    requiresAgent: false,
-    wrapper: (content, agentName) => `
+    requiresCorporateName: true,
+    wrapper: (content, agentName, corporateName) => `
       <div style="max-width: 650px; margin: 0 auto; font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 20px;">
         <div style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
           <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 30px; text-align: center;">
@@ -12,15 +12,15 @@ export const frames = {
                 <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
               </svg>
             </div>
-            <h1 style="margin: 0; color: white; font-size: 26px; font-weight: 600;">Acme Inc</h1>
+            <h1 style="margin: 0; color: white; font-size: 26px; font-weight: 600;">${corporateName || 'Acme Inc'}</h1>
             <p style="margin: 8px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px;">Gestión de Comunidades de Propietarios</p>
           </div>
           <div style="padding: 35px 30px;">
             ${content}
           </div>
           <div style="background-color: #f8f9fa; padding: 25px 30px; border-top: 1px solid #e5e7eb; text-align: center;">
-            <p style="margin: 0 0 5px 0; color: #6b7280; font-size: 12px;">Este es un mensaje oficial de Acme Inc</p>
-            <p style="margin: 0; color: #9ca3af; font-size: 11px;">© 2024 Acme Inc - Gestión de Comunidades</p>
+            <p style="margin: 0 0 5px 0; color: #6b7280; font-size: 12px;">Este es un mensaje oficial de ${corporateName || 'Acme Inc'}</p>
+            <p style="margin: 0; color: #9ca3af; font-size: 11px;">© 2024 ${corporateName || 'Acme Inc'} - Gestión de Comunidades</p>
           </div>
         </div>
       </div>
@@ -36,8 +36,8 @@ export const frames = {
   community: {
     name: 'Comunidad',
     description: 'Comunicación entre vecinos',
-    requiresAgent: false,
-    wrapper: (content, agentName) => `
+    requiresCommunityName: true,
+    wrapper: (content, agentName, corporateName, communityName) => `
       <div style="max-width: 680px; margin: 0 auto; font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #fefce8; padding: 20px;">
         <div style="background-color: #ffffff; border-radius: 12px; overflow: hidden; border: 2px solid #fbbf24;">
           <div style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); padding: 25px 30px;">
@@ -48,7 +48,7 @@ export const frames = {
                 </svg>
               </div>
               <div>
-                <h2 style="margin: 0; color: white; font-size: 22px; font-weight: 600;">Tablón de la Comunidad</h2>
+                <h2 style="margin: 0; color: white; font-size: 22px; font-weight: 600;">${communityName || 'Tablón de la Comunidad'}</h2>
                 <p style="margin: 5px 0 0 0; color: rgba(255,255,255,0.95); font-size: 13px;">Información para todos los vecinos</p>
               </div>
             </div>
@@ -58,7 +58,7 @@ export const frames = {
           </div>
           <div style="background-color: #fffbeb; padding: 20px 30px; border-top: 2px solid #fef3c7;">
             <p style="margin: 0; color: #92400e; font-size: 13px; text-align: center;">
-              📢 Mensaje compartido con toda la comunidad de propietarios
+              📢 Mensaje compartido con ${communityName || 'la comunidad de propietarios'}
             </p>
           </div>
         </div>
@@ -76,7 +76,7 @@ export const frames = {
     name: 'Agente Personal',
     description: 'Mensaje de tu gestor asignado',
     requiresAgent: true,
-    wrapper: (content, agentName) => `
+    wrapper: (content, agentName, corporateName, communityName) => `
       <div style="max-width: 600px; margin: 0 auto; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f0fdf4; padding: 20px;">
         <div style="background-color: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.07); border-left: 4px solid #10b981;">
           <div style="padding: 25px 30px; background: linear-gradient(to right, #ecfdf5 0%, #ffffff 100%);">
