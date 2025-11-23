@@ -131,6 +131,23 @@ Bienvenido a nuestro sistema. Tu email registrado es: **{{email}}**
             <button onClick={addPet} className="add-btn">+ Añadir mascota</button>
           </div>
 
+          <h2>Marco</h2>
+          <div className="frame-selector">
+            {Object.entries(frames).map(([key, frame]) => (
+              <div
+                key={key}
+                className={`frame-option ${selectedFrame === key ? 'selected' : ''}`}
+                onClick={() => setSelectedFrame(key)}
+              >
+                <div dangerouslySetInnerHTML={{ __html: frame.preview }} />
+                <div className="frame-info">
+                  <strong>{frame.name}</strong>
+                  <small>{frame.description}</small>
+                </div>
+              </div>
+            ))}
+          </div>
+
           {frames[selectedFrame]?.requiresCorporateName && (
             <div className="input-group">
               <label>Nombre de la Empresa:</label>
@@ -166,23 +183,6 @@ Bienvenido a nuestro sistema. Tu email registrado es: **{{email}}**
               />
             </div>
           )}
-
-          <h2>Marco</h2>
-          <div className="frame-selector">
-            {Object.entries(frames).map(([key, frame]) => (
-              <div
-                key={key}
-                className={`frame-option ${selectedFrame === key ? 'selected' : ''}`}
-                onClick={() => setSelectedFrame(key)}
-              >
-                <div dangerouslySetInnerHTML={{ __html: frame.preview }} />
-                <div className="frame-info">
-                  <strong>{frame.name}</strong>
-                  <small>{frame.description}</small>
-                </div>
-              </div>
-            ))}
-          </div>
 
           <h2>Plantilla (Markdown + Mustache)</h2>
           <textarea

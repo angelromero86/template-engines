@@ -195,6 +195,48 @@
   font-style: italic;
 }
 
+.frame-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.frame-option {
+  cursor: pointer;
+  padding: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  transition: all 0.2s;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.frame-option:hover {
+  border-color: rgba(100, 108, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.frame-option.selected {
+  border-color: #646cff;
+  background-color: rgba(100, 108, 255, 0.1);
+}
+
+.frame-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.frame-info strong {
+  font-size: 0.9rem;
+}
+
+.frame-info small {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
 .preview-modal {
   position: fixed;
   top: 0;
@@ -281,5 +323,19 @@
 
   .merge-tags-info code {
     background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .frame-option {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  .frame-option:hover {
+    border-color: rgba(83, 91, 242, 0.5);
+  }
+
+  .frame-option.selected {
+    border-color: #535bf2;
+    background-color: rgba(83, 91, 242, 0.1);
   }
 }
