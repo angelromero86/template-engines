@@ -89,6 +89,7 @@ function Home() {
         <ul>
           <li>Edición HTML</li>
           <li>Más features free que Unlayer</li>
+          <li>Bloquea la edición del marco (protege elementos corporativos)</li>
         </ul>
 
         <h3>Contras</h3>
