@@ -8,7 +8,7 @@ import './App.css'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/template-engines">
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
